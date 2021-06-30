@@ -1,7 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,6 @@ import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +25,7 @@ import static com.codepath.apps.restclienttemplate.TimelineActivity.TAG;
 
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
 
-    // Pass in the contxt and list of tweets
+    // Pass in the context and list of tweets
 
     Context context;
     List<Tweet> tweets;
@@ -76,6 +74,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView tvBody;
         TextView tvScreenName;
         TextView tvTimestamp;
+        ImageView media_image;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +82,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+            media_image = itemView.findViewById(R.id.media_image);
         }
 
         public void bind(Tweet tweet) {
@@ -91,7 +91,9 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             String relative_time = getRelativeTimeAgo(tweet.createdAt);
             tvTimestamp.setText(relative_time);
 
+            //Render profile picture and embedded image
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
+            Glide.with(context).load(tweet.media_url).into(media_image);
         }
 
         public String getRelativeTimeAgo(String rawJsonDate) {
