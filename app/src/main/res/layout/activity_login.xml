@@ -6,14 +6,35 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/twitter_blue"
     tools:context=".LoginActivity" >
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/login_title"
         android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:onClick="loginToRest"
-        android:text="@string/login_label" />
+        android:text="@string/login_label"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/login_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="87dp"
+        android:layout_marginEnd="85dp"
+        android:text="Twitter"
+        android:textColor="@color/white"
+        android:textSize="50sp" />
 
 </RelativeLayout>
